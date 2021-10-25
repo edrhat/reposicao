@@ -16,6 +16,44 @@ class Tela:
         self.img1.cab = cab
         self.img1.place(x=170, y=20)
 
+        borracha = tk.PhotoImage(file="borracha.png")
+        self.imgg = tk.Label(janela, image=borracha)
+        self.imgg.borracha = borracha
+        self.imgg.place(x=675, y=137)
+        self.imgg.bind("<Button-1>", self.bor1)
+
+        borracha2 = tk.PhotoImage(file="borracha.png")
+        self.imgg2 = tk.Label(janela, image=borracha2)
+        self.imgg2.borracha2 = borracha2
+        self.imgg2.place(x=675, y=210)
+        self.imgg2.bind("<Button-1>", self.bor2)
+
+        borracha3 = tk.PhotoImage(file="borracha.png")
+        self.imgg3 = tk.Label(janela, image=borracha3)
+        self.imgg3.borracha3 = borracha3
+        self.imgg3.place(x=675, y=270)
+        self.imgg3.bind("<Button-1>", self.bor3)
+
+        borracha4 = tk.PhotoImage(file="borracha.png")
+        self.imgg4 = tk.Label(janela, image=borracha4)
+        self.imgg4.borracha4 = borracha4
+        self.imgg4.place(x=675, y=370)
+        self.imgg4.bind("<Button-1>", self.bor4)
+
+        borracha5 = tk.PhotoImage(file="borracha.png")
+        self.imgg5 = tk.Label(janela, image=borracha5)
+        self.imgg5.borracha5 = borracha5
+        self.imgg5.place(x=675, y=447)
+        self.imgg5.bind("<Button-1>", self.bor5)
+
+        borracha6 = tk.PhotoImage(file="borracha.png")
+        self.imgg6 = tk.Label(janela, image=borracha6)
+        self.imgg6.borracha6 = borracha6
+        self.imgg6.place(x=675, y=510)
+        self.imgg6.bind("<Button-1>", self.bor6)
+
+
+
         self.nome = tk.Label(janela, text="Aluno:")
         self.nome["font"] = ("Helvetica", "16")
         self.nome.place(x=100, y=140)
@@ -47,7 +85,7 @@ class Tela:
         self.prof["font"] = ("Helvetica", "16")
         self.prof.place(x=60, y=270)
 
-        professores=["Analice", "Eduardo", "Henrique", "João", "Kathlen", "Leonardo Matos", "Leonardo Mendes"]
+        professores=["Analice", "Eduardo", "Henrique", "João", "Kathlen", "Leonardo Alves", "Leonardo Mendes"]
         self.profE = ttk.Combobox(janela, values=professores)
         self.profE["font"] = ("Helvetica", "16")
         self.profE.place(x=170, y=272, width=180)
@@ -126,7 +164,40 @@ class Tela:
         
 
 
+    def bor1(self, event):
 
+        self.nomeE.delete(0, "end")
+        
+
+    def bor2(self, event):
+
+        self.ctrE.delete(0, "end")
+
+        self.turmaE.delete(0, "end")
+
+    def bor3(self, event):
+
+        self.profE.delete(0, "end")
+
+        self.cursoE.delete(0, "end")
+
+    def bor4(self, event):
+
+        self.moduloE.delete(0, "end")
+
+        self.motivoE.delete(0, "end")
+
+    def bor5(self, event):
+
+        self.dataF.delete(0, "end")
+
+        self.dataR.delete(0, "end")
+
+    def bor6(self, event):
+
+        self.horE.delete(0, "end")
+
+       
 
 
     def gerar(self, event):
