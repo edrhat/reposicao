@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkcalendar import DateEntry
 from tkinter import *
 import time
+import os
 
 class Tela:
 
@@ -122,6 +123,8 @@ class Tela:
         self.bt1.place(x=230, y=610)
         self.bt1.bind("<Button-1>", self.limpar)
 
+        
+
 
 
 
@@ -180,33 +183,37 @@ class Tela:
         self.lb6.place(x=50, y=390)
 
         self.lb7 = tk.Label(janela2, text= "Curso: "+curso)
-        self.lb7["font"] = ("Times new roman", "16")
+        self.lb7["font"] = ("Times new roman", "20")
         self.lb7.config(bg="white")
         self.lb7.place(x=150, y=440)
 
         self.lb8 = tk.Label(janela2, text= "Turma: "+turma)
-        self.lb8["font"] = ("Times new roman", "16")
+        self.lb8["font"] = ("Times new roman", "20")
         self.lb8.config(bg="white")
         self.lb8.place(x=150, y=480)
 
         self.lb9 = tk.Label(janela2, text= "Módulo: "+modulo)
-        self.lb9["font"] = ("Times new roman", "16")
+        self.lb9["font"] = ("Times new roman", "20")
         self.lb9.config(bg="white")
         self.lb9.place(x=150, y=520)
 
         self.lb10 = tk.Label(janela2, text= "Motivo da reposição:  "+motivo)
-        self.lb10["font"] = ("Arial black", "16")
+        self.lb10["font"] = ("Arial black", "18")
         self.lb10.config(bg="white", foreground="darkred")
         self.lb10.place(x=50, y=580)
 
 
         self.lb11 = tk.Label(janela2, text= "em  "+falta)
-        self.lb11["font"] = ("Arial black", "16")
+        self.lb11["font"] = ("Arial black", "18")
         self.lb11.config(bg="white", foreground="darkred")
-        self.lb11.place(x=490, y=580)
-        
+        self.lb11.place(x=565, y=580)
+
+        janela2.resizable(width=False, height=False)
         
 
+    
+        
+        
         
         
         janela2.mainloop()
@@ -228,4 +235,5 @@ janela = tk.Tk()
 Tela(janela)
 janela.title("Reposição de aula")
 janela.geometry("750x700+100+10")
+janela.resizable(width=False, height=False)
 janela.mainloop()
