@@ -299,7 +299,8 @@ class Tela:
         self.motivoE.delete(0, "end")
         self.dataR.delete(0, "end")
         self.horE.delete(0, "end")
-
+        self.profE.delete(0, "end")
+        self.dataF.delete(0, "end")
     
 
 janela = tk.Tk()
