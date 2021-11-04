@@ -94,7 +94,7 @@ class Tela:
         self.curso["font"] = ("Helvetica", "16")
         self.curso.place(x=415, y=270)
 
-        cursos=["Hardware", "Informática", "Informática com gestão Adm.", "Inglês"]
+        cursos=["Hardware", "Informática", "Informática com Gestão Administrativa","Gestão Administrativa com Liderança", "Inglês"]
         self.cursoE = ttk.Combobox(janela, values=cursos)
         self.cursoE["font"] = ("Helvetica", "16")
         self.cursoE.place(x=490, y=272, width=180)
