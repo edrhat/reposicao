@@ -11,10 +11,10 @@ class Tela:
 
 
         
-        cab = tk.PhotoImage(file="cab.png")
-        self.img1 = tk.Label(janela, image=cab)
-        self.img1.cab = cab
-        self.img1.place(x=170, y=20)
+        cab = tk.Label(janela, text="Reposição WhatsApp")
+        cab["font"] = ("Lucida", "30", "italic", "bold")
+        
+        cab.place(x=170, y=35)
 
         borracha = tk.PhotoImage(file="borracha.png")
         self.imgg = tk.Label(janela, image=borracha)
