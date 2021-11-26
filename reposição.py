@@ -130,6 +130,13 @@ class Tela:
         self.dataF = DateEntry(janela, values=motivos, locale="pt_BR")
         self.dataF["font"] = ("Helvetica", "16")
         self.dataF.place(x=170, y=452, width=140)
+        
+        self.mais = tk.Label(janela, text="+")
+        self.mais["font"] = ("Arial", "15")
+        self.mais.config(bg="green", foreground="white")
+        self.mais.place(x=312, y=452)
+        self.mais.bind("<Button-1>", self.maiss)
+        
 
         self.repor = tk.Label(janela, text="Data da reposição:")
         self.repor["font"] = ("Helvetica", "16")
@@ -162,7 +169,13 @@ class Tela:
         self.bt1.bind("<Button-1>", self.limpar)
 
         
+    def maiss(self, event):
 
+        motivos=["Aluno(a) faltou", "Plantão de dúvidas"]
+        self.dataF2 = DateEntry(janela, values=motivos, locale="pt_BR")
+        self.dataF2["font"] = ("Helvetica", "16")
+        self.dataF2.place(x=170, y=490, width=140)
+        
 
     def bor1(self, event):
 
