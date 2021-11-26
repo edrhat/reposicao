@@ -4,6 +4,7 @@ from tkcalendar import DateEntry
 from tkinter import *
 import time
 import os
+from tkinter import messagebox
 
 class Tela:
 
@@ -103,9 +104,6 @@ class Tela:
         self.modulo["font"] = ("Helvetica", "16")
         self.modulo.place(x=70, y=370)
 
-        self.moduloE = ttk.Combobox(janela, values="")
-        self.moduloE["font"] = ("Helvetica", "16")
-        self.moduloE.place(x=160, y=372, width=190)
 
 
         self.moduloE = tk.Entry(janela)
@@ -130,13 +128,6 @@ class Tela:
         self.dataF = DateEntry(janela, values=motivos, locale="pt_BR")
         self.dataF["font"] = ("Helvetica", "16")
         self.dataF.place(x=170, y=452, width=140)
-        
-        self.mais = tk.Label(janela, text="+")
-        self.mais["font"] = ("Arial", "15")
-        self.mais.config(bg="green", foreground="white")
-        self.mais.place(x=312, y=452)
-        self.mais.bind("<Button-1>", self.maiss)
-        
 
         self.repor = tk.Label(janela, text="Data da reposição:")
         self.repor["font"] = ("Helvetica", "16")
@@ -157,25 +148,19 @@ class Tela:
         
 
         self.bt1 = tk.Button(janela, text="Gerar")
-        self.bt1["font"] = ("Helvetica", "17")
+        self.bt1["font"] = ("Helvetica", "20")
         self.bt1.config(bg="#006400", foreground="white")
         self.bt1.place(x=440, y=610)
         self.bt1.bind("<Button-1>", self.gerar)
 
-        self.bt1 = tk.Button(janela, text="Limpar")
-        self.bt1["font"] = ("Helvetica", "17")
-        self.bt1.config(bg="#8B0000", foreground="white")
-        self.bt1.place(x=230, y=610)
-        self.bt1.bind("<Button-1>", self.limpar)
+        self.bt2 = tk.Button(janela, text="Limpar")
+        self.bt2["font"] = ("Helvetica", "20")
+        self.bt2.config(bg="#8B0000", foreground="white")
+        self.bt2.place(x=230, y=610)
+        self.bt2.bind("<Button-1>", self.limpar)
 
         
-    def maiss(self, event):
 
-        motivos=["Aluno(a) faltou", "Plantão de dúvidas"]
-        self.dataF2 = DateEntry(janela, values=motivos, locale="pt_BR")
-        self.dataF2["font"] = ("Helvetica", "16")
-        self.dataF2.place(x=170, y=490, width=140)
-        
 
     def bor1(self, event):
 
@@ -226,73 +211,84 @@ class Tela:
         horario = self.horE.get()
         professor = self.profE.get()
 
-        janela2 = tk.Tk()
-        janela2.geometry("800x700+100+20")
-        janela2.config(bg="white")
-        janela2.title("Tirar Print")
+        if nome == "" or ctr == "" or turma == "" or curso == "" or  motivo == "" or data == "" or falta == "" or horario == "" or professor == "":
+            self.nomeE.config(bg="#FA8072")
+            self.ctrE.config(bg="#FA8072")
+            self.turmaE.config(bg="#FA8072")
+            
+            messagebox.showerror("Campo vazio", "Alguns campos não podem ficar em branco.")
+            self.nomeE.config(bg="#C0C0C0", foreground="#363636")
+            self.ctrE.config(bg="#C0C0C0", foreground="#363636")
+            self.turmaE.config(bg="#C0C0C0", foreground="#363636")
 
-        cab2 = tk.PhotoImage(master=janela2,file="cab2.png")
-        self.imgg = tk.Label(janela2, image=cab2)
-        self.imgg.cab2 = cab2
-        self.imgg.place(x=215, y=5)
+        else:
+            janela2 = tk.Tk()
+            janela2.geometry("800x700+100+20")
+            janela2.config(bg="white")
+            janela2.title("Tirar Print")
 
-        self.lb = tk.Label(janela2, text= "PROFESSOR QUE MINISTRARÁ A REPOSIÇÃO: "+professor)
-        self.lb["font"] = ("Arial black", "16")
-        self.lb.config(bg="white")
-        self.lb.place(x=50, y=180)
+            cab2 = tk.PhotoImage(master=janela2,file="cab2.png")
+            self.imgg = tk.Label(janela2, image=cab2)
+            self.imgg.cab2 = cab2
+            self.imgg.place(x=215, y=5)
 
-        self.lb2 = tk.Label(janela2, text= "ALUNO(A): "+nome)
-        self.lb2["font"] = ("Arial black", "16")
-        self.lb2.config(bg="white")
-        self.lb2.place(x=50, y=230)
+            self.lb = tk.Label(janela2, text= "PROFESSOR QUE MINISTRARÁ A REPOSIÇÃO: "+professor)
+            self.lb["font"] = ("Arial black", "16")
+            self.lb.config(bg="white")
+            self.lb.place(x=50, y=180)
 
-        self.lb3 = tk.Label(janela2, text= "CTR: "+ctr)
-        self.lb3["font"] = ("Arial black", "16")
-        self.lb3.config(bg="white")
-        self.lb3.place(x=550, y=230)
+            self.lb2 = tk.Label(janela2, text= "ALUNO(A): "+nome)
+            self.lb2["font"] = ("Arial black", "16")
+            self.lb2.config(bg="white")
+            self.lb2.place(x=50, y=230)
 
-        self.lb4 = tk.Label(janela2, text= "DATA: "+data)
-        self.lb4["font"] = ("Arial black", "16")
-        self.lb4.config(bg="white")
-        self.lb4.place(x=50, y=290)
+            self.lb3 = tk.Label(janela2, text= "CTR: "+ctr)
+            self.lb3["font"] = ("Arial black", "16")
+            self.lb3.config(bg="white")
+            self.lb3.place(x=550, y=230)
 
-        self.lb5 = tk.Label(janela2, text= "das  "+horario)
-        self.lb5["font"] = ("Arial black", "16")
-        self.lb5.config(bg="white")
-        self.lb5.place(x=270, y=290)
+            self.lb4 = tk.Label(janela2, text= "DATA: "+data)
+            self.lb4["font"] = ("Arial black", "16")
+            self.lb4.config(bg="white")
+            self.lb4.place(x=50, y=290)
 
-        self.lb6 = tk.Label(janela2, text= "DADOS DO CURSO:")
-        self.lb6["font"] = ("Arial black", "16")
-        self.lb6.config(bg="white")
-        self.lb6.place(x=50, y=390)
+            self.lb5 = tk.Label(janela2, text= "das  "+horario)
+            self.lb5["font"] = ("Arial black", "16")
+            self.lb5.config(bg="white")
+            self.lb5.place(x=270, y=290)
 
-        self.lb7 = tk.Label(janela2, text= "Curso: "+curso)
-        self.lb7["font"] = ("Times new roman", "20")
-        self.lb7.config(bg="white")
-        self.lb7.place(x=150, y=440)
+            self.lb6 = tk.Label(janela2, text= "DADOS DO CURSO:")
+            self.lb6["font"] = ("Arial black", "16")
+            self.lb6.config(bg="white")
+            self.lb6.place(x=50, y=390)
 
-        self.lb8 = tk.Label(janela2, text= "Turma: "+turma)
-        self.lb8["font"] = ("Times new roman", "20")
-        self.lb8.config(bg="white")
-        self.lb8.place(x=150, y=480)
+            self.lb7 = tk.Label(janela2, text= "Curso: "+curso)
+            self.lb7["font"] = ("Times new roman", "20")
+            self.lb7.config(bg="white")
+            self.lb7.place(x=150, y=440)
 
-        self.lb9 = tk.Label(janela2, text= "Módulo: "+modulo)
-        self.lb9["font"] = ("Times new roman", "20")
-        self.lb9.config(bg="white")
-        self.lb9.place(x=150, y=520)
+            self.lb8 = tk.Label(janela2, text= "Turma: "+turma)
+            self.lb8["font"] = ("Times new roman", "20")
+            self.lb8.config(bg="white")
+            self.lb8.place(x=150, y=480)
 
-        self.lb10 = tk.Label(janela2, text= "Motivo da reposição:  "+motivo)
-        self.lb10["font"] = ("Arial black", "18")
-        self.lb10.config(bg="white", foreground="darkred")
-        self.lb10.place(x=50, y=580)
+            self.lb9 = tk.Label(janela2, text= "Módulo: "+modulo)
+            self.lb9["font"] = ("Times new roman", "20")
+            self.lb9.config(bg="white")
+            self.lb9.place(x=150, y=520)
 
+            self.lb10 = tk.Label(janela2, text= "Motivo da reposição:  "+motivo)
+            self.lb10["font"] = ("Arial black", "18")
+            self.lb10.config(bg="white", foreground="darkred")
+            self.lb10.place(x=50, y=580)
 
-        self.lb11 = tk.Label(janela2, text= "em  "+falta)
-        self.lb11["font"] = ("Arial black", "18")
-        self.lb11.config(bg="white", foreground="darkred")
-        self.lb11.place(x=565, y=580)
-
-        janela2.resizable(width=False, height=False)
+    
+            self.lb11 = tk.Label(janela2, text= "em  "+falta)
+            self.lb11["font"] = ("Arial black", "18")
+            self.lb11.config(bg="white", foreground="darkred")
+            self.lb11.place(x=565, y=580)
+    
+            janela2.resizable(width=False, height=False)
         
 
     
