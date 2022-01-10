@@ -86,7 +86,7 @@ class Tela:
         self.prof["font"] = ("Helvetica", "16")
         self.prof.place(x=60, y=270)
 
-        professores=["Analice", "Eduardo", "Henrique", "João", "Kathlen", "Leonardo Alves", "Leonardo Mendes"]
+        professores=["Eduardo","Gabriel", "Henrique", "Juliana", "Kathleen", "Leonardo Alves", "Leonardo Mendes"]
         self.profE = ttk.Combobox(janela, values=professores)
         self.profE["font"] = ("Helvetica", "16")
         self.profE.place(x=170, y=272, width=180)
@@ -104,12 +104,29 @@ class Tela:
         self.modulo["font"] = ("Helvetica", "16")
         self.modulo.place(x=70, y=370)
 
+        self.moduloE = ttk.Combobox(janela, values="")
+        self.moduloE["font"] = ("Helvetica", "16")
+        self.moduloE.place(x=160, y=372, width=190)
 
+        
 
         self.moduloE = tk.Entry(janela)
         self.moduloE["font"] = ("Helvetica", "16")
         self.moduloE.config(bg="#C0C0C0", foreground="#363636")
         self.moduloE.place(x=160, y=372, width=190)
+
+        
+        
+        self.no = tk.Label(janela, text="Version: 1.0  -   By: Eduardo")
+        self.no["font"] = ("Helvetica, bold", "13")
+        self.no.config(foreground="black")
+        self.no.place(x=260, y=693)
+
+        self.no2 = tk.Label(janela, text="Não é obrigatório")
+        self.no2["font"] = ("Helvetica, bold", "11")
+        self.no2.config(foreground="red")
+        self.no2.place(x=197, y=405)
+
 
 
         self.motivo = tk.Label(janela, text="Motivo:")
@@ -148,16 +165,16 @@ class Tela:
         
 
         self.bt1 = tk.Button(janela, text="Gerar")
-        self.bt1["font"] = ("Helvetica", "20")
+        self.bt1["font"] = ("Helvetica", "17")
         self.bt1.config(bg="#006400", foreground="white")
         self.bt1.place(x=440, y=610)
         self.bt1.bind("<Button-1>", self.gerar)
 
-        self.bt2 = tk.Button(janela, text="Limpar")
-        self.bt2["font"] = ("Helvetica", "20")
-        self.bt2.config(bg="#8B0000", foreground="white")
-        self.bt2.place(x=230, y=610)
-        self.bt2.bind("<Button-1>", self.limpar)
+        self.bt1 = tk.Button(janela, text="Limpar")
+        self.bt1["font"] = ("Helvetica", "17")
+        self.bt1.config(bg="#8B0000", foreground="white")
+        self.bt1.place(x=230, y=610)
+        self.bt1.bind("<Button-1>", self.limpar)
 
         
 
@@ -211,17 +228,24 @@ class Tela:
         horario = self.horE.get()
         professor = self.profE.get()
 
-        if nome == "" or ctr == "" or turma == "" or curso == "" or  motivo == "" or data == "" or falta == "" or horario == "" or professor == "":
+        if (nome) == "" or (ctr) == "" or (turma) == "" or (curso) == "" or (motivo) == "" or (data) == "" or (falta) == "" or (horario) == "" or (professor) == "":
+            
             self.nomeE.config(bg="#FA8072")
             self.ctrE.config(bg="#FA8072")
             self.turmaE.config(bg="#FA8072")
-            
-            messagebox.showerror("Campo vazio", "Alguns campos não podem ficar em branco.")
+            self.horE.config(bg="#FA8072")
+
+            messagebox.showwarning("Erro ao gerar folha de reposição", "Alguns campos não podem ficar em branco.")
+
             self.nomeE.config(bg="#C0C0C0", foreground="#363636")
             self.ctrE.config(bg="#C0C0C0", foreground="#363636")
             self.turmaE.config(bg="#C0C0C0", foreground="#363636")
-
+            self.horE.config(bg="#C0C0C0", foreground="#363636")
+            
         else:
+
+            
+            
             janela2 = tk.Tk()
             janela2.geometry("800x700+100+20")
             janela2.config(bg="white")
@@ -282,12 +306,12 @@ class Tela:
             self.lb10.config(bg="white", foreground="darkred")
             self.lb10.place(x=50, y=580)
 
-    
+
             self.lb11 = tk.Label(janela2, text= "em  "+falta)
             self.lb11["font"] = ("Arial black", "18")
             self.lb11.config(bg="white", foreground="darkred")
             self.lb11.place(x=565, y=580)
-    
+            janela2.iconbitmap("mc.ico")
             janela2.resizable(width=False, height=False)
         
 
@@ -296,7 +320,7 @@ class Tela:
         
         
         
-        janela2.mainloop()
+            janela2.mainloop()
 
     def limpar(self, event):
 
@@ -315,6 +339,7 @@ class Tela:
 janela = tk.Tk()
 Tela(janela)
 janela.title("Reposição de aula")
-janela.geometry("750x700+100+10")
+janela.geometry("750x720+100+10")
 janela.resizable(width=False, height=False)
+janela.iconbitmap("mc.ico")
 janela.mainloop()
