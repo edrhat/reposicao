@@ -14,8 +14,13 @@ class Tela:
         
         cab = tk.Label(janela, text="Reposição WhatsApp")
         cab["font"] = ("Lucida", "30", "italic", "bold")
-        
+        cab.config(foreground="red")
         cab.place(x=170, y=35)
+
+        wp = tk.PhotoImage(file="wp.png")
+        self.wpp = tk.Label(janela, image=wp)
+        self.wpp.wp = wp
+        self.wpp.place(x=0,y=0)
 
         borracha = tk.PhotoImage(file="borracha.png")
         self.imgg = tk.Label(janela, image=borracha)
@@ -86,7 +91,7 @@ class Tela:
         self.prof["font"] = ("Helvetica", "16")
         self.prof.place(x=60, y=270)
 
-        professores=["Eduardo","Gabriel", "Henrique", "Juliana", "Kathleen", "Leonardo Alves", "Leonardo Mendes"]
+        professores=["Eduardo", "Henrique", "Juliana", "Leonardo Alves",  "Marcony", "Matheus"]
         self.profE = ttk.Combobox(janela, values=professores)
         self.profE["font"] = ("Helvetica", "16")
         self.profE.place(x=170, y=272, width=180)
